@@ -35,9 +35,15 @@ scene.add(cube);
 const axesHelper = new THREE.AxesHelper(4);
 scene.add(axesHelper);
 
+// Sets a 12 by 12 gird helper
+const gridHelper = new THREE.GridHelper(12, 12);
+scene.add(gridHelper);
+
 // Position camera
 camera.position.z = 8;
 camera.position.y = 3;
+
+cube.rotateY(Math.PI / 4);
 
 
 // Draw the scene every time the screen is refreshed
@@ -45,8 +51,8 @@ function animate() {
     requestAnimationFrame(animate);
 
     // Rotate cube
-    cube.rotation.x += 0.005;
-    cube.rotation.y += 0.005;
+    // cube.rotation.x += 0.005;
+    // cube.rotation.y += 0.005;
 
     renderer.render(scene, camera);
 }
