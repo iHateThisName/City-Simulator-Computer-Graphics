@@ -31,8 +31,13 @@ const cube = new THREE.Mesh(geometry, material);
 // Add to scene
 scene.add(cube);
 
+// Sets the x, y, and z axes with each having a length of 4
+const axesHelper = new THREE.AxesHelper(4);
+scene.add(axesHelper);
+
 // Position camera
-camera.position.z = 5;
+camera.position.z = 8;
+camera.position.y = 3;
 
 
 // Draw the scene every time the screen is refreshed
