@@ -40,13 +40,13 @@ export class Road {
     renderRoadAroundPark(parkLength, parkWidth) {
 
         // Render Road South of the park
-        const southRoad = this.#_buildStraightRoad(parkLength + 3, true, 0, 6.5);
+        const southRoad = this.#_buildStraightRoad(parkLength + 3, true, 0, (parkWidth / 2) + 0.5);
         // Render North
-        const northRoad = this.#_buildStraightRoad(parkLength + 3, true, 0, - 6.5);
+        const northRoad = this.#_buildStraightRoad(parkLength + 3, true, 0, - (parkWidth / 2) - 0.5);
         // Render West
-        const westRoad = this.#_buildStraightRoad(parkWidth + 2, false, 0, - 6.5);
+        const westRoad = this.#_buildStraightRoad(parkWidth + 3, false, 0, - (parkLength / 2) - 0.5);
         // Render East
-        const eastRoad = this.#_buildStraightRoad(parkWidth + 2, false, 0, 6.5);
+        const eastRoad = this.#_buildStraightRoad(parkWidth + 3, false, 0, (parkLength / 2) + 0.5);
 
 
 
