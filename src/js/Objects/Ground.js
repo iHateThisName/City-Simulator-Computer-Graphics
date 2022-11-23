@@ -1,7 +1,7 @@
 function ground() {
 
     // Init PlaneGeometry object
-    const geometry = new THREE.PlaneGeometry(100, 100);
+    const geometry = new THREE.PlaneGeometry(20, 20);
 
     // Create material with color
     const material = new THREE.MeshBasicMaterial({

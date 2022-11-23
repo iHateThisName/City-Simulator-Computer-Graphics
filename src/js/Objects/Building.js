@@ -1,5 +1,5 @@
 
-function building(x, y, z) {// Init BoxGeometry object (rectangular cuboid)
+function building(x, y, z, skyscraper) {// Init BoxGeometry object (rectangular cuboid)
     const buildingShape = new THREE.BoxGeometry(2, 3, 2);
     const roofGeo = new THREE.OctahedronGeometry(1.45, 0);
     
@@ -13,7 +13,9 @@ function building(x, y, z) {// Init BoxGeometry object (rectangular cuboid)
     
     const house = new THREE.Group();
     house.add(building);
-    house.add(cone);
+    if(!skyscraper) {
+        house.add(cone);
+    }
 
     house.position.set(x, y, z);
     cone.position.y = 1.5;

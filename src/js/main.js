@@ -24,14 +24,12 @@ document.body.appendChild(renderer.domElement);
 
 
 // Add to scene
-//scene.add(firstTreeCube());
-scene.add(Plane());
-scene.add(Tree());
-scene.add(building(2, 0, 4));
-let road = new Road(0,6.5);
-scene.add(road.buildStraightRoad(14, true))
+//let road = new Road(0,6.7);
+//scene.add(road.buildStraightRoad(14, true));
 scene.add(ground());
-scene.add(Park(0, 0, 0))
+scene.add(Park(0, 0, 0));
+scene.add(Neighborhood(8.5, 2, 4));
+scene.add(Neighborhood(8.5, 2, -7));
 
 //scene.add(building(0, -4));
 
