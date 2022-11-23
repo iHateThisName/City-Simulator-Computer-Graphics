@@ -22,8 +22,9 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Add to scene
-scene.add(firstTreeCube());
+//scene.add(firstTreeCube());
 scene.add(Plane());
+scene.add(Tree());
 
 //We can also do const cube = firstTreeCube()
 
