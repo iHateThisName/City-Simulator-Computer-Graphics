@@ -28,7 +28,11 @@ document.body.appendChild(renderer.domElement);
 let road = new Road();
 scene.add(road.renderRoadAroundPark(9,18));
 scene.add(ground());
-scene.add(Park(0, 0, 0))
+scene.add(Park(0, 0, 0));
+scene.add(Neighborhood(8.5, 2, 4));
+scene.add(Neighborhood(8.5, 2, -7));
+
+//scene.add(building(0, -4));
 
 //We can also do const cube = firstTreeCube()
 
@@ -37,7 +41,7 @@ const axesHelper = new THREE.AxesHelper(20);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(20, 20);
+const gridHelper = new THREE.GridHelper(30, 30);
 scene.add(gridHelper);
 
 // Position camera
