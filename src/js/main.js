@@ -21,10 +21,19 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // Render to canvas element
 document.body.appendChild(renderer.domElement);
 
+
+
 // Add to scene
 //scene.add(firstTreeCube());
 scene.add(Plane());
-scene.add(Tree());
+
+scene.add(Tree(4, 1, 1))
+scene.add(Tree(-2, 1, -2))
+scene.add(Tree(3, 0, 4))
+scene.add(Tree(3, 0, -3))
+scene.add(Tree(-5, 0, 0.5))
+scene.add(Tree(-3, 1, 4))
+
 
 //We can also do const cube = firstTreeCube()
 
