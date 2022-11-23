@@ -19,17 +19,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // Render to canvas element
 document.body.appendChild(renderer.domElement);
 
-// Init BoxGeometry object (rectangular cuboid)
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-
-// Create material with color
-const material = new THREE.MeshBasicMaterial({color: 0x0000ff});
-
-// Create mesh with geo and material
-const cube = new THREE.Mesh(geometry, material);
-
 // Add to scene
-scene.add(cube);
+scene.add(firstTreeCube());
+
+//We can also do const cube = firstTreeCube()
 
 // Sets the x, y, and z axes with each having a length of 4
 const axesHelper = new THREE.AxesHelper(4);
@@ -43,7 +36,6 @@ scene.add(gridHelper);
 camera.position.z = 8;
 camera.position.y = 3;
 
-cube.rotateY(Math.PI / 4);
 
 
 // Draw the scene every time the screen is refreshed
