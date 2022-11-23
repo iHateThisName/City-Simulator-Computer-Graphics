@@ -46,4 +46,15 @@ function animate() {
     renderer.render(scene, camera);
 }
 
+function onWindowResize() {
+    // Camera frustum aspect ratio
+    camera.aspect = window.innerWidth / window.innerHeight;
+    // After making changes to aspect
+    camera.updateProjectionMatrix();
+    // Reset size
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+window.addEventListener('resize', onWindowResize, false);
+
 animate();
