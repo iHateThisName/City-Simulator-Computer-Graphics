@@ -23,6 +23,7 @@ document.body.appendChild(renderer.domElement);
 
 // Add to scene
 scene.add(firstTreeCube());
+scene.add(Plane());
 
 //We can also do const cube = firstTreeCube()
 
