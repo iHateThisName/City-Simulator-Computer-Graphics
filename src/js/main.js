@@ -24,7 +24,7 @@ document.body.appendChild(renderer.domElement);
 // Add to scene
 //scene.add(firstTreeCube());
 let road = new Road(0,6.5);
-scene.add(road.buildStraightRoad(14, true))
+scene.add(road.renderRoadAroundPark(12,12));
 scene.add(ground());
 scene.add(Plane());
 scene.add(Tree());

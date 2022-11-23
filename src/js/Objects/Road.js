@@ -1,13 +1,11 @@
 
 export class Road {
-    geometry;
-    constructor(xPos, zPos) {
-        // this.length = length;
-        this.xPos = xPos;
-        this.zPos = zPos;
-    }
+    // constructor(xPos, zPos) {
+    //     this.xPos = xPos;
+    //     this.zPos = zPos;
+    // }
 
-    buildStraightRoad(length, orientInXAces) {
+    #_buildStraightRoad(length, orientInXAces, xPos, zPos) {
 
         if (orientInXAces) {
             this.geometry = new THREE.BoxGeometry(length, 0.1, 1);
@@ -19,16 +17,45 @@ export class Road {
         // Create mesh with geo and material
         const road = new THREE.Mesh(this.geometry, material);
 
-        // road.position.set(this.xPos - 12, this.zPos);
-        // road.position.x = this.xPos;
-
         if (orientInXAces) {
-            road.position.x = this.xPos;
-            road.position.z = this.zPos + 0.5;
+            road.position.x = xPos;
+
+            if (zPos < 0) {
+                road.position.z = zPos - 0.5;
+            } else {
+                road.position.z = zPos + 0.5;
+            }
         } else {
-            road.position.x = this.zPos + 0.5;
-            road.position.z = this.xPos;
+
+            if (zPos < 0) {
+                road.position.x = zPos - 0.5;
+            } else {
+                road.position.x = zPos + 0.5;
+            }
+            road.position.z = xPos;
         }
         return road;
+    }
+
+    renderRoadAroundPark(parkLength, parkWidth) {
+
+        // Render Road South of the park
+        const southRoad = this.#_buildStraightRoad(parkLength + 3, true, 0, 6.5);
+        // Render North
+        const northRoad = this.#_buildStraightRoad(parkLength + 3, true, 0, - 6.5);
+        // Render West
+        const westRoad = this.#_buildStraightRoad(parkWidth + 2, false, 0, - 6.5);
+        // Render East
+        const eastRoad = this.#_buildStraightRoad(parkWidth + 2, false, 0, 6.5);
+
+
+
+        const parkRoad = new THREE.Object3D();
+        parkRoad.add(southRoad);
+        parkRoad.add(northRoad);
+        parkRoad.add(westRoad);
+        parkRoad.add(eastRoad);
+
+        return parkRoad;
     }
 }
