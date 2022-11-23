@@ -1,6 +1,6 @@
 function Plane(xPos, yPos, zPos) {
     // Init PlaneGeometry object 
-    const geometry = new THREE.PlaneGeometry( 9 , 16 );
+    const geometry = new THREE.PlaneGeometry( 9 , 18 );
 
     // Create material with color
     const material = new THREE.MeshBasicMaterial( {color: 0x0b520d, side: THREE.DoubleSide} );
