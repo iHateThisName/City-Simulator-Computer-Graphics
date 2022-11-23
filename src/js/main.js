@@ -25,8 +25,8 @@ document.body.appendChild(renderer.domElement);
 
 // Add to scene
 //scene.add(firstTreeCube());
-let road = new Road(0,6.5);
-scene.add(road.buildStraightRoad(14, true))
+let road = new Road();
+scene.add(road.renderRoadAroundPark(9,18));
 scene.add(ground());
 scene.add(Park(0, 0, 0))
 
@@ -41,8 +41,8 @@ const gridHelper = new THREE.GridHelper(20, 20);
 scene.add(gridHelper);
 
 // Position camera
-camera.position.z = 8;
-camera.position.y = 3;
+camera.position.z = 20;
+camera.position.y = 10;
 
 const controls = new OrbitControls(
     camera, renderer.domElement);
