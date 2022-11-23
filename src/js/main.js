@@ -25,6 +25,9 @@ document.body.appendChild(renderer.domElement);
 //scene.add(firstTreeCube());
 scene.add(Plane());
 scene.add(Tree());
+scene.add(building(2, 0, 4));
+
+//scene.add(building(0, -4));
 
 //We can also do const cube = firstTreeCube()
 
