@@ -1,3 +1,5 @@
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
+
 // Init scene
 const scene = new THREE.Scene();
 
@@ -36,6 +38,9 @@ scene.add(gridHelper);
 camera.position.z = 8;
 camera.position.y = 3;
 
+const controls = new OrbitControls(
+    camera, renderer.domElement);
+
 
 
 // Draw the scene every time the screen is refreshed
@@ -45,6 +50,7 @@ function animate() {
     // Rotate cube
     // cube.rotation.x += 0.005;
     // cube.rotation.y += 0.005;
+    controls.update();
 
     renderer.render(scene, camera);
 }
