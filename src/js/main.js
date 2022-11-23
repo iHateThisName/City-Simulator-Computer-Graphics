@@ -23,17 +23,18 @@ document.body.appendChild(renderer.domElement);
 
 // Add to scene
 //scene.add(firstTreeCube());
+scene.add(ground());
 scene.add(Plane());
 scene.add(Tree());
 
 //We can also do const cube = firstTreeCube()
 
 // Sets the x, y, and z axes with each having a length of 4
-const axesHelper = new THREE.AxesHelper(4);
+const axesHelper = new THREE.AxesHelper(20);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(12, 12);
+const gridHelper = new THREE.GridHelper(20, 20);
 scene.add(gridHelper);
 
 // Position camera
