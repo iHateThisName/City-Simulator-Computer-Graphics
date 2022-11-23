@@ -1,5 +1,5 @@
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
-
+import {Road} from "./Objects/Road.js";
 // Init scene
 const scene = new THREE.Scene();
 
@@ -21,22 +21,28 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // Render to canvas element
 document.body.appendChild(renderer.domElement);
 
+
+
 // Add to scene
 //scene.add(firstTreeCube());
 scene.add(Plane());
 scene.add(Tree());
 scene.add(building(2, 0, 4));
+let road = new Road(0,6.5);
+scene.add(road.buildStraightRoad(14, true))
+scene.add(ground());
+scene.add(Park(0, 0, 0))
 
 //scene.add(building(0, -4));
 
 //We can also do const cube = firstTreeCube()
 
 // Sets the x, y, and z axes with each having a length of 4
-const axesHelper = new THREE.AxesHelper(4);
+const axesHelper = new THREE.AxesHelper(20);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(12, 12);
+const gridHelper = new THREE.GridHelper(20, 20);
 scene.add(gridHelper);
 
 // Position camera
