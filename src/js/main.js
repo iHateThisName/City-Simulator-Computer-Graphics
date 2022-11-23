@@ -1,6 +1,5 @@
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
-
-
+import {Road} from "./Objects/Road.js";
 // Init scene
 const scene = new THREE.Scene();
 
@@ -25,6 +24,9 @@ document.body.appendChild(renderer.domElement);
 
 
 // Add to scene
+//scene.add(firstTreeCube());
+let road = new Road(0,6.5);
+scene.add(road.buildStraightRoad(14, true))
 scene.add(ground());
 scene.add(Park(0, 0, 0))
 
