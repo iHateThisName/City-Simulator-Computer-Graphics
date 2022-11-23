@@ -1,5 +1,6 @@
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 
+
 // Init scene
 const scene = new THREE.Scene();
 
@@ -21,11 +22,11 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // Render to canvas element
 document.body.appendChild(renderer.domElement);
 
+
+
 // Add to scene
-//scene.add(firstTreeCube());
 scene.add(ground());
-scene.add(Plane());
-scene.add(Tree());
+scene.add(Park(0, 0, 0))
 
 //We can also do const cube = firstTreeCube()
 
