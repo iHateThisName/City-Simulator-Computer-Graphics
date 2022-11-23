@@ -1,5 +1,3 @@
-
-
 function Tree(xPos, yPos, zPos) {
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
