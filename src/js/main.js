@@ -40,7 +40,7 @@ const axesHelper = new THREE.AxesHelper(20);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(20, 20);
+const gridHelper = new THREE.GridHelper(30, 30);
 scene.add(gridHelper);
 
 // Position camera
