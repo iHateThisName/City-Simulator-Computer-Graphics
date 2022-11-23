@@ -23,6 +23,20 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
+// Init skybox background
+
+
+var skybox = new THREE.CubeTextureLoader().load([
+    "static/skybox/right.bmp",
+    "static/skybox/left.bmp",
+    "static/skybox/up.bmp",
+    "static/skybox/down.bmp",
+    "static/skybox/front.bmp",
+    "static/skybox/back.bmp"
+
+]);
+
+scene.background = skybox;
 
 // Add to scene
 scene.add(Park(0, 0, 0))
@@ -34,8 +48,8 @@ const axesHelper = new THREE.AxesHelper(4);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(12, 12);
-scene.add(gridHelper);
+//const gridHelper = new THREE.GridHelper(12, 12);
+//scene.add(gridHelper);
 
 // Position camera
 camera.position.z = 8;
