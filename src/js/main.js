@@ -24,15 +24,12 @@ document.body.appendChild(renderer.domElement);
 
 
 // Add to scene
-//scene.add(firstTreeCube());
-let road = new Road();
-scene.add(road.renderRoadAroundPark(9,18));
+const road = new Road(9,18);
 scene.add(ground());
 scene.add(Park(0, 0, 0));
-scene.add(Neighborhood(8.5, 2, 4));
-scene.add(Neighborhood(8.5, 2, -7));
-
-//scene.add(building(0, -4));
+scene.add(road.renderRoadAroundPark());
+scene.add(Neighborhood(8.5, 2, 3));
+scene.add(Neighborhood(8.5, 2, -6));
 
 //We can also do const cube = firstTreeCube()
 
