@@ -1,34 +1,67 @@
 
 export class Road {
-    geometry;
-    constructor(xPos, zPos) {
-        // this.length = length;
-        this.xPos = xPos;
-        this.zPos = zPos;
+    constructor(parkLength, parkWidth) {
+        this.parkLength = parkLength;
+        this.parkWidth = parkWidth;
     }
 
-    buildStraightRoad(length, orientInXAces) {
+    _buildStraightRoad(length, alongX, xPos, zPos) {
 
-        if (orientInXAces) {
-            this.geometry = new THREE.BoxGeometry(length, 0.1, 1);
-        } else {
-            this.geometry = new THREE.BoxGeometry(1, 0.1, length);
-        }
+        this.geometry = new THREE.BoxGeometry(length, 0.1, 1);
+
+
         // Create material with color
         const material = new THREE.MeshBasicMaterial({color: 0x5A717A});
         // Create mesh with geo and material
         const road = new THREE.Mesh(this.geometry, material);
 
-        // road.position.set(this.xPos - 12, this.zPos);
-        // road.position.x = this.xPos;
 
-        if (orientInXAces) {
-            road.position.x = this.xPos;
-            road.position.z = this.zPos + 0.5;
+
+        if (alongX) {
+            // const x = length / 2;
+            road.position.x = xPos;
+            road.position.z = zPos;
         } else {
-            road.position.x = this.zPos + 0.5;
-            road.position.z = this.xPos;
+            // const z = length / 2;
+            road.position.x = xPos;
+            road.position.z = zPos;
+            road.rotateY(Math.PI / 2);
         }
         return road;
+    }
+
+    renderRoadAroundPark() {
+
+        let distanceFromPark = 0;
+
+        // Render Road South of the park
+        if (this.parkLength < 0) {
+            distanceFromPark = -1;
+        } if (this.parkLength > 0) {
+            distanceFromPark = 1;
+        }
+
+        const xDirectionValue = (this.parkLength / 2) + distanceFromPark;
+        const zDirectionValue = (this.parkWidth / 2) + distanceFromPark;
+
+
+        // Render North
+        const positiveZ = this._buildStraightRoad(this.parkWidth + 3, false, xDirectionValue, 0);
+        // Render South
+        const negativeZ = this._buildStraightRoad(this.parkWidth + 3, false, - xDirectionValue, 0);
+        // Render East
+        const positiveX = this._buildStraightRoad(this.parkLength + 1, true, 0, zDirectionValue);
+        // Render West
+        const negativeX = this._buildStraightRoad(this.parkLength + 1, true, 0, - zDirectionValue);
+
+
+
+        const parkRoad = new THREE.Object3D();
+        parkRoad.add(positiveZ);
+        parkRoad.add(negativeZ);
+        parkRoad.add(positiveX);
+        parkRoad.add(negativeX);
+
+        return parkRoad;
     }
 }
