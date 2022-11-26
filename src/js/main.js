@@ -22,6 +22,20 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
+// Init skybox background
+
+
+var skybox = new THREE.CubeTextureLoader().load([
+    "static/skybox/right.bmp",
+    "static/skybox/left.bmp",
+    "static/skybox/up.bmp",
+    "static/skybox/down.bmp",
+    "static/skybox/front.bmp",
+    "static/skybox/back.bmp"
+
+]);
+
+scene.background = skybox;
 
 // Add to scene
 const road = new Road(9,18);
