@@ -41,9 +41,22 @@ scene.background = skybox;
 const road = new Road(9,18);
 scene.add(ground());
 scene.add(Park(0, 0, 0));
+//Left side of the park
 scene.add(road.renderRoadAroundPark());
-scene.add(Neighborhood(8.5, 2, 3));
-scene.add(Neighborhood(8.5, 2, -6));
+scene.add(Neighborhood(8.5, 2, -16.5));
+scene.add(Neighborhood(8.5, 2, -6.5));
+scene.add(Neighborhood(8.5, 2, 3.5));
+scene.add(Neighborhood(8.5, 2, 13.5));
+//West side of the park
+scene.add(Neighborhood(-11.5, 2, -16.5));
+scene.add(Neighborhood(-11.5, 2, -6.5));
+scene.add(Neighborhood(-11.5, 2, 3.5));
+scene.add(Neighborhood(-11.5, 2, 13.5));
+//North side
+scene.add(Neighborhood(-1.5, 2, 13.5));
+//South side
+scene.add(Neighborhood(-1.5, 2, -16.5));
+
 
 //We can also do const cube = firstTreeCube()
 
@@ -52,7 +65,7 @@ const axesHelper = new THREE.AxesHelper(20);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(30, 30);
+const gridHelper = new THREE.GridHelper(40, 40);
 scene.add(gridHelper);
 
 // Position camera
