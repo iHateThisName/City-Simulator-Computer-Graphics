@@ -3,6 +3,8 @@ import {Road} from "./Objects/Road.js";
 // Init scene
 const scene = new THREE.Scene();
 
+var mapOfNeighborhood = new Map();
+
 // Init camera (PerspectiveCamera)
 const camera = new THREE.PerspectiveCamera
 (
@@ -38,24 +40,62 @@ var skybox = new THREE.CubeTextureLoader().load([
 scene.background = skybox;
 
 // Add to scene
-const road = new Road(9,18);
+const road = new Road(8,18);
 scene.add(ground());
 scene.add(Park(0, 0, 0));
-//Left side of the park
 scene.add(road.renderRoadAroundPark());
-scene.add(Neighborhood(8.5, 2, -16.5));
-scene.add(Neighborhood(8.5, 2, -6.5));
-scene.add(Neighborhood(8.5, 2, 3.5));
-scene.add(Neighborhood(8.5, 2, 13.5));
-//West side of the park
-scene.add(Neighborhood(-11.5, 2, -16.5));
-scene.add(Neighborhood(-11.5, 2, -6.5));
-scene.add(Neighborhood(-11.5, 2, 3.5));
-scene.add(Neighborhood(-11.5, 2, 13.5));
-//North side
-scene.add(Neighborhood(-1.5, 2, 13.5));
-//South side
-scene.add(Neighborhood(-1.5, 2, -16.5));
+
+Neighborhoods();
+
+document.getElementById("deleteButton").addEventListener("click", () => deleteNeighborhood());
+//Deletes a Neighborhood.
+function deleteNeighborhood() {
+    var i = 0;
+    let neighborhoodInput = document.getElementById("neighborhoodID");
+    i = parseInt(neighborhoodInput.value);
+    let nh = mapOfNeighborhood.get(i);
+    if(nh != null){
+        scene.remove(nh);
+        mapOfNeighborhood.delete(i);
+    }else{
+        alert("There is no disctrict with this id ");
+    }
+}
+
+document.getElementById("addButton").addEventListener("click", () => addNeighborhood());
+//Adds the Neighborhood. 
+function addNeighborhood() {
+    var i = 0;
+    let neighborhoodInput = document.getElementById("neighborhoodID");
+    i = parseInt(neighborhoodInput.value);
+    let newNeighborhood = Neighborhood(8.5, 2, -16.5);
+    if(!mapOfNeighborhood.has(i)){
+        scene.add(newNeighborhood);
+        mapOfNeighborhood.set(i, newNeighborhood);
+    }else{
+        alert("There is already an neighborhood at this spot!");
+    }
+}
+
+
+function Neighborhoods() {
+
+    mapOfNeighborhood.set(1, Neighborhood(8.5, 2, -16.5)); 
+    mapOfNeighborhood.set(2, Neighborhood(8.5, 2, -6.5));
+    mapOfNeighborhood.set(3, Neighborhood(8.5, 2, 3.5));
+    mapOfNeighborhood.set(4, Neighborhood(8.5, 2, 13.5));
+    mapOfNeighborhood.set(5, Neighborhood(-1.5, 2, 13.5));
+    mapOfNeighborhood.set(6, Neighborhood(-11.5, 2, 13.5));
+    mapOfNeighborhood.set(7, Neighborhood(-11.5, 2, 3.5));
+    mapOfNeighborhood.set(8, Neighborhood(-11.5, 2, -6.5));
+    mapOfNeighborhood.set(9, Neighborhood(-11.5, 2, -16.5));
+    mapOfNeighborhood.set(10, Neighborhood(-1.5, 2, -16.5));
+
+    let values = mapOfNeighborhood.values();
+    for(let nh of values){
+        scene.add(nh);
+    }
+}
 
 
 //We can also do const cube = firstTreeCube()

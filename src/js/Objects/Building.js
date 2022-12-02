@@ -8,7 +8,7 @@ function building(x, height, z, skyscraper, futuristic) {
     const buildingMaterial = new THREE.MeshBasicMaterial({color: getRandomColor()});
     const roofMaterial = new THREE.MeshBasicMaterial( {color: 0x1C1C1C} );
 
-
+    
     let building = new THREE.Mesh(buildingShape, buildingMaterial);
     let cone = new THREE.Mesh( roofGeo, roofMaterial );
     let futuristicBuilding = new THREE.Mesh(futuristicHouse, buildingMaterial)

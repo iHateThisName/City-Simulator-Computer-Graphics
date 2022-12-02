@@ -46,13 +46,13 @@ export class Road {
 
 
         // Render North
-        const positiveZ = this._buildStraightRoad(this.parkWidth + 3, false, xDirectionValue, 0);
+        const positiveZ = this._buildStraightRoad(this.parkWidth + 20, false, xDirectionValue, 0);
         // Render South
-        const negativeZ = this._buildStraightRoad(this.parkWidth + 3, false, - xDirectionValue, 0);
+        const negativeZ = this._buildStraightRoad(this.parkWidth + 20, false,  -xDirectionValue, 0);
         // Render East
-        const positiveX = this._buildStraightRoad(this.parkLength + 1, true, 0, zDirectionValue);
+        const positiveX = this._buildStraightRoad(this.parkLength + 20, true, 0, zDirectionValue, 0);
         // Render West
-        const negativeX = this._buildStraightRoad(this.parkLength + 1, true, 0, - zDirectionValue);
+        const negativeX = this._buildStraightRoad(this.parkLength + 20, true, 0, -zDirectionValue, 0);
 
 
 

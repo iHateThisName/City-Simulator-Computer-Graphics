@@ -1,13 +1,20 @@
-function Neighborhood(x, height, z, skyscraper, futuristic) {
+
+
+function Neighborhood(x, height, z, skyscraper, futuristic, listOfBuildings) {
     
     const neighborhood = new THREE.Object3D();
 
     neighborhood.add(HouseField(x, z));
+
+    
+    
+    
+
     if(!futuristic) {
-    neighborhood.add(building(x, Math.random()*3, z, skyscraper, true));
-    neighborhood.add(building(x, Math.random()*3, z+3, skyscraper));
-    neighborhood.add(building(x+3, Math.random()*3, z, true));
-    neighborhood.add(building(x+3, Math.random()*3, z+3, skyscraper));
+    neighborhood.add(building(x-0.5, Math.random()*3, z-0.5, skyscraper, true));
+    neighborhood.add(building(x-0.5, Math.random()*3, z+3.5, skyscraper));
+    neighborhood.add(building(x+3.5, Math.random()*3, z-0.5, true));
+    neighborhood.add(building(x+3.5, Math.random()*3, z+3.5, skyscraper));
     }
     else {
        
@@ -16,7 +23,7 @@ function Neighborhood(x, height, z, skyscraper, futuristic) {
 
     function HouseField(x, z) {
         // Init PlaneGeometry object 
-        const geometry = new THREE.BoxGeometry(7, 0, 7);
+        const geometry = new THREE.BoxGeometry(8, 0, 8);
     
         // Create material with color
         const material = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
@@ -29,5 +36,4 @@ function Neighborhood(x, height, z, skyscraper, futuristic) {
     
         return plane;
     }
-
 }
