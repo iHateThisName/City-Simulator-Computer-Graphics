@@ -15,6 +15,9 @@ const camera = new THREE.PerspectiveCamera
 // Init renderer
 const renderer = new THREE.WebGLRenderer({antialias: true});
 
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
 // Set size (whole window)
 renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -35,11 +38,21 @@ var skybox = new THREE.CubeTextureLoader().load([
 
 ]);
 
-//scene.background = skybox;
+scene.background = skybox;
+
+// Lights
+let ambient = new THREE.AmbientLight(0xffffff, 0.5);
+ambient.position.set( 20, 20, 20);
+ambient.castShadow = true;
+scene.add(ambient);
 
 // Add to scene
-/*const road = new Road(9,18);
-scene.add(ground());
+const road = new Road(9,18);
+let sun = new Sun(50, 50, 0.5)
+let sunHelper = new THREE.DirectionalLightHelper(sun);
+
+
+scene.add(Sun(50, 50, 1))
 scene.add(Park(0, 0, 0));
 //Left side of the park
 scene.add(road.renderRoadAroundPark());
@@ -55,9 +68,10 @@ scene.add(Neighborhood(-11.5, 2, 13.5));
 //North side
 scene.add(Neighborhood(-1.5, 2, 13.5));
 //South side
-scene.add(Neighborhood(-1.5, 2, -16.5));*/
+scene.add(Neighborhood(-1.5, 2, -16.5));
 scene.add(firstTreeCube());
-//scene.add(ground());
+scene.add(ground());
+scene.add(sunHelper);
 
 // set up ground
 const groundGeometry = new THREE.BoxGeometry(16, 0.5, 16);
@@ -65,7 +79,7 @@ const groundMaterial = new THREE.MeshPhongMaterial({ color: 0xfafafa });
 const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
 groundMesh.receiveShadow = true;
 groundMesh.position.y = -2;
-scene.add(groundMesh);
+
 
 
 //We can also do const cube = firstTreeCube()
@@ -85,28 +99,9 @@ camera.position.y = 10;
 const controls = new OrbitControls(
     camera, renderer.domElement);
 
-
-// Lighting
-let sun = new THREE.DirectionalLight(0xff0040, 0.5);
-sun.position.set( 2, 2, 0 );
-const sunhelper = new THREE.DirectionalLightHelper(sun, 3);
-
-let ambient = new THREE.AmbientLight(0xff0040, 0.5);
-ambient.position.set( 20, 20, 20);
-
-sun.castShadow = true;
-ambient.castShadow = true;
-
-sun.shadow.mapSize = new THREE.Vector2(512, 512)
-sun.shadow.camera.near = -5;
-sun.shadow.camera.far = 10;
-
-
-scene.add(new THREE.CameraHelper(sun.shadow.camera));
-
-scene.add(sun);
-scene.add(sunhelper);
-scene.add(ambient);
+// scene.add(sun);
+// scene.add(ambient);
+//scene.add(groundMesh);
 
 
 // Draw the scene every time the screen is refreshed

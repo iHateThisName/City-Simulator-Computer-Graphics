@@ -11,7 +11,7 @@ export class Road {
 
 
         // Create material with color
-        const material = new THREE.MeshBasicMaterial({color: 0x5A717A});
+        const material = new THREE.MeshLambertMaterial({color: 0x5A717A});
         // Create mesh with geo and material
         const road = new THREE.Mesh(this.geometry, material);
 
@@ -27,6 +27,8 @@ export class Road {
             road.position.z = zPos;
             road.rotateY(Math.PI / 2);
         }
+
+        road.receiveShadow = true;
         return road;
     }
 
@@ -55,13 +57,13 @@ export class Road {
         const negativeX = this._buildStraightRoad(this.parkLength + 1, true, 0, - zDirectionValue);
 
 
-
         const parkRoad = new THREE.Object3D();
         parkRoad.add(positiveZ);
         parkRoad.add(negativeZ);
         parkRoad.add(positiveX);
         parkRoad.add(negativeX);
 
+        parkRoad.position.y = -0.1
         return parkRoad;
     }
 }

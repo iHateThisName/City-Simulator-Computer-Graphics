@@ -2,16 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c4a8fa4-c60b-4560-9af4-1acb1e6c0240" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/js/Objects/Sun.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Building.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Building.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Circle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Circle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/Objects/Cube.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Cube.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/Objects/Ground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Ground.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Neighborhood.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Neighborhood.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Park.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Park.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/Objects/Plane.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Plane.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Road.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Road.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Tree.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,11 +55,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669978482069</updated>
-      <workItem from="1669978485539" duration="3167000" />
+      <workItem from="1669978485539" duration="11819000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

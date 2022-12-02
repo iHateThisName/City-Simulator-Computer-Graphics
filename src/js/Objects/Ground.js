@@ -1,7 +1,7 @@
 function ground() {
 
     // Init PlaneGeometry object
-    const geometry = new THREE.PlaneGeometry(40, 40);
+    const geometry = new THREE.PlaneGeometry(80, 80);
 
     // Create material with color
     const material = new THREE.MeshLambertMaterial({
@@ -16,6 +16,8 @@ function ground() {
     plane.rotateY(Math.PI);
     // Making the plane slightly lower to not collide with the park, Grid helper and Axes helper
     plane.position.y = -0.1
+
+    plane.receiveShadow = true;
 
 
 

@@ -15,7 +15,7 @@ function firstTreeCube() {// Init BoxGeometry object (rectangular cuboid)
     cube.castShadow = true;
 
 
-    cube.position.set(0,2,0)
+    cube.position.set(0,2,10)
 
 
     return cube;
