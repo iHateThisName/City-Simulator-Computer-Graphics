@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2c4a8fa4-c60b-4560-9af4-1acb1e6c0240" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/js/Objects/Sun.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Building.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Building.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Circle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Circle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Cube.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Cube.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Ground.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Ground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Neighborhood.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Neighborhood.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Park.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Park.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Plane.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Plane.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Road.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Road.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/Objects/Tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Tree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Objects/Sun.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Sun.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,14 +32,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/vegar/Documents/NTNU Data/City-Simulator-Computer-Graphics"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
