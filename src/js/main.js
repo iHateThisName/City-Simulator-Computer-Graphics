@@ -25,9 +25,7 @@ document.body.appendChild(renderer.domElement);
 
 
 // Init skybox background
-
-
-var skybox = new THREE.CubeTextureLoader().load([
+const skybox = new THREE.CubeTextureLoader().load([
     "static/skybox/right.bmp",
     "static/skybox/left.bmp",
     "static/skybox/up.bmp",
@@ -40,10 +38,14 @@ var skybox = new THREE.CubeTextureLoader().load([
 scene.background = skybox;
 
 // Add to scene
-const road = new Road(8,18);
+const road = new Road();
 scene.add(ground());
 scene.add(Park(0, 0, 0));
-scene.add(road.renderRoadAroundPark());
+scene.add(road.renderRoadAroundSquare(8, 18, 0, 0));
+scene.add(road.renderRoadAroundSquare(8, 8, 10, 5));
+scene.add(road.renderRoadAroundSquare(8, 8, 10, -5));
+
+
 
 Neighborhoods();
 

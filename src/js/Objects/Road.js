@@ -1,9 +1,5 @@
 
 export class Road {
-    constructor(parkLength, parkWidth) {
-        this.parkLength = parkLength;
-        this.parkWidth = parkWidth;
-    }
 
     _buildStraightRoad(length, alongX, xPos, zPos) {
 
@@ -30,29 +26,29 @@ export class Road {
         return road;
     }
 
-    renderRoadAroundPark() {
+    renderRoadAroundSquare(roadLength, roadWith, xPos, zPos) {
 
         let distanceFromPark = 0;
 
         // Render Road South of the park
-        if (this.parkLength < 0) {
+        if (roadLength < 0) {
             distanceFromPark = -1;
-        } if (this.parkLength > 0) {
+        } if (roadLength > 0) {
             distanceFromPark = 1;
         }
 
-        const xDirectionValue = (this.parkLength / 2) + distanceFromPark;
-        const zDirectionValue = (this.parkWidth / 2) + distanceFromPark;
+        const xDirectionValue = (roadLength / 2) + distanceFromPark;
+        const zDirectionValue = (roadWith / 2) + distanceFromPark;
 
 
         // Render North
-        const positiveZ = this._buildStraightRoad(this.parkWidth + 20, false, xDirectionValue, 0);
+        const positiveZ = this._buildStraightRoad(roadWith + 3, false, xDirectionValue, 0);
         // Render South
-        const negativeZ = this._buildStraightRoad(this.parkWidth + 20, false,  -xDirectionValue, 0);
+        const negativeZ = this._buildStraightRoad(roadWith + 3, false,  -xDirectionValue, 0);
         // Render East
-        const positiveX = this._buildStraightRoad(this.parkLength + 20, true, 0, zDirectionValue, 0);
+        const positiveX = this._buildStraightRoad(roadLength + 1, true, 0, zDirectionValue, 0);
         // Render West
-        const negativeX = this._buildStraightRoad(this.parkLength + 20, true, 0, -zDirectionValue, 0);
+        const negativeX = this._buildStraightRoad(roadLength + 1, true, 0, -zDirectionValue, 0);
 
 
 
@@ -61,6 +57,9 @@ export class Road {
         parkRoad.add(negativeZ);
         parkRoad.add(positiveX);
         parkRoad.add(negativeX);
+
+        parkRoad.position.x = xPos;
+        parkRoad.position.z = zPos;
 
         return parkRoad;
     }
