@@ -3,6 +3,8 @@ import {Road} from "./Objects/Road.js";
 // Init scene
 const scene = new THREE.Scene();
 
+var mapOfNeighborhood = new Map();
+
 // Init camera (PerspectiveCamera)
 const camera = new THREE.PerspectiveCamera
 (
@@ -22,14 +24,79 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
+// Init skybox background
+
+
+var skybox = new THREE.CubeTextureLoader().load([
+    "static/skybox/right.bmp",
+    "static/skybox/left.bmp",
+    "static/skybox/up.bmp",
+    "static/skybox/down.bmp",
+    "static/skybox/front.bmp",
+    "static/skybox/back.bmp"
+
+]);
+
+scene.background = skybox;
 
 // Add to scene
-const road = new Road(9,18);
+const road = new Road(8,18);
 scene.add(ground());
 scene.add(Park(0, 0, 0));
 scene.add(road.renderRoadAroundPark());
-scene.add(Neighborhood(8.5, 2, 3));
-scene.add(Neighborhood(8.5, 2, -6));
+
+Neighborhoods();
+
+document.getElementById("deleteButton").addEventListener("click", () => deleteNeighborhood());
+//Deletes a Neighborhood.
+function deleteNeighborhood() {
+    var i = 0;
+    let neighborhoodInput = document.getElementById("neighborhoodID");
+    i = parseInt(neighborhoodInput.value);
+    let nh = mapOfNeighborhood.get(i);
+    if(nh != null){
+        scene.remove(nh);
+        mapOfNeighborhood.delete(i);
+    }else{
+        alert("There is no disctrict with this id ");
+    }
+}
+
+document.getElementById("addButton").addEventListener("click", () => addNeighborhood());
+//Adds the Neighborhood. 
+function addNeighborhood() {
+    var i = 0;
+    let neighborhoodInput = document.getElementById("neighborhoodID");
+    i = parseInt(neighborhoodInput.value);
+    let newNeighborhood = Neighborhood(8.5, 2, -16.5);
+    if(!mapOfNeighborhood.has(i)){
+        scene.add(newNeighborhood);
+        mapOfNeighborhood.set(i, newNeighborhood);
+    }else{
+        alert("There is already an neighborhood at this spot!");
+    }
+}
+
+
+function Neighborhoods() {
+
+    mapOfNeighborhood.set(1, Neighborhood(8.5, 2, -16.5)); 
+    mapOfNeighborhood.set(2, Neighborhood(8.5, 2, -6.5));
+    mapOfNeighborhood.set(3, Neighborhood(8.5, 2, 3.5));
+    mapOfNeighborhood.set(4, Neighborhood(8.5, 2, 13.5));
+    mapOfNeighborhood.set(5, Neighborhood(-1.5, 2, 13.5));
+    mapOfNeighborhood.set(6, Neighborhood(-11.5, 2, 13.5));
+    mapOfNeighborhood.set(7, Neighborhood(-11.5, 2, 3.5));
+    mapOfNeighborhood.set(8, Neighborhood(-11.5, 2, -6.5));
+    mapOfNeighborhood.set(9, Neighborhood(-11.5, 2, -16.5));
+    mapOfNeighborhood.set(10, Neighborhood(-1.5, 2, -16.5));
+
+    let values = mapOfNeighborhood.values();
+    for(let nh of values){
+        scene.add(nh);
+    }
+}
+
 
 //We can also do const cube = firstTreeCube()
 
@@ -38,7 +105,7 @@ const axesHelper = new THREE.AxesHelper(20);
 scene.add(axesHelper);
 
 // Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(30, 30);
+const gridHelper = new THREE.GridHelper(40, 40);
 scene.add(gridHelper);
 
 // Position camera
