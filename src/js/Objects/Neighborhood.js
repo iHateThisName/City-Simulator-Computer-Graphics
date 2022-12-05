@@ -18,7 +18,7 @@ function Neighborhood(x, height, z) {
 
     function HouseField(x, z) {
         // Init PlaneGeometry object 
-        const geometry = new THREE.BoxGeometry(8, 0, 8);
+        const geometry = new THREE.BoxGeometry(8, 0.2, 8);
     
         // Create material with color
         const material = new THREE.MeshLambertMaterial( {color: 0x808080, side: THREE.DoubleSide} );
