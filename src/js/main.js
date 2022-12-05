@@ -68,6 +68,7 @@ function initSky() {
         new THREE.SphereBufferGeometry( 20000, 16, 8 ),
         new THREE.MeshBasicMaterial( { color: 0xffffff } )
     );
+
     sunSphere.position.y = - 700000;
     sunSphere.visible = true;
     scene.add(sunSphere);
@@ -83,6 +84,10 @@ function initSky() {
         azimuth: azimuth, //0.97, //azi, // 0.740544002807376, // Facing front,
         sun: false
     };
+
+    // sun
+    let sun = new Sun(0,0,0,0.5)
+    scene.add(sun);
 
     let distance = 400000;
 
@@ -106,6 +111,10 @@ function initSky() {
         sunSphere.position.x = distance * Math.cos(phi);
         sunSphere.position.y = distance * Math.sin(phi) * Math.sin(theta);
         sunSphere.position.z = distance * Math.sin(phi) * Math.cos(theta);
+
+        //sun
+        sun.position.set(sunSphere.position.x, sunSphere.position.y, sunSphere.position.z);
+
 
         sunSphere.visible = effectController.sun;
 
@@ -133,6 +142,8 @@ let park = new Park(0,0,0);
 //scene.add(sun)
 
 scene.add(park);
+
+
 //scene.add(shadowHelper);
 //Left side of the park
 scene.add(road.renderRoadAroundPark());
