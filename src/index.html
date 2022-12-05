@@ -8,7 +8,13 @@
             margin: 0;
         }
 
+        .overlay {
+            position: absolute;
+            width: 100%;
+        }
+
         h1 {
+
             text-align: center;
         }
 
@@ -19,23 +25,36 @@
             background-color: aliceblue;
             position: fixed;
             width: 200px;
-            height: 25%;
+            top: 80px;
+            padding-bottom: 10px;
         }
 
         button {
-            width: 80%;  
+            width: 80%;
+        }
+
+        .tittle {
+            background-color: #9ab0c9;
+            /*height: 20px;*/
+            position: absolute;
+            width: 100%;
+            /*padding-bottom: 20px;*/
         }
 
     </style>
 </head>
 <body>
 
-    <h1>City Simulator</h1>
+<div class="overlay">
+
+    <div class="tittle">
+        <h1>City Simulator</h1>
+    </div>
 
     <div class="optionContainer">
         <h2>Edit City</h2>
         <label>Neighborhood</label>
-        <input type="number" id="neighborhoodID" min="1" max="10"> 
+        <input type="number" id="neighborhoodID" min="1" max="10">
         <button id="addButton">Add Buildings</button>
         <button id="deleteButton">Delete Buildings</button>
 
@@ -45,11 +64,11 @@
         <label>Pos Z</label>
         <input type="number" min="-10", max="10">
 
-        
-
     </div>
 
-    
+</div>
+
+
 
 
 
