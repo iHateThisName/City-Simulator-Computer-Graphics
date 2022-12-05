@@ -4,6 +4,7 @@ import {Road} from "./Objects/Road.js";
 const scene = new THREE.Scene();
 
 var mapOfNeighborhood = new Map();
+var mapOfBuilding = new Map();
 
 // Init camera (PerspectiveCamera)
 const camera = new THREE.PerspectiveCamera
@@ -46,6 +47,7 @@ scene.add(Park(0, 0, 0));
 scene.add(road.renderRoadAroundPark());
 
 Neighborhoods();
+Buildings();
 
 document.getElementById("deleteButton").addEventListener("click", () => deleteNeighborhood());
 //Deletes a Neighborhood.
@@ -56,7 +58,6 @@ function deleteNeighborhood() {
     let nh = mapOfNeighborhood.get(i);
     if(nh != null){
         scene.remove(nh);
-        mapOfNeighborhood.delete(i);
     }else{
         alert("There is no disctrict with this id ");
     }
@@ -68,15 +69,9 @@ function addNeighborhood() {
     var i = 0;
     let neighborhoodInput = document.getElementById("neighborhoodID");
     i = parseInt(neighborhoodInput.value);
-    let newNeighborhood = Neighborhood(8.5, 2, -16.5);
-    if(!mapOfNeighborhood.has(i)){
-        scene.add(newNeighborhood);
-        mapOfNeighborhood.set(i, newNeighborhood);
-    }else{
-        alert("There is already an neighborhood at this spot!");
-    }
+    let nh = mapOfNeighborhood.get(i);
+        scene.add(nh);
 }
-
 
 function Neighborhoods() {
 
@@ -94,9 +89,20 @@ function Neighborhoods() {
     let values = mapOfNeighborhood.values();
     for(let nh of values){
         scene.add(nh);
-    }
+    } 
 }
 
+function Buildings(x, z) {
+    mapOfBuilding.set(1, building(x-0.5, Math.random()*3, z-0.5, true));
+    mapOfBuilding.set(2, building(x-0.5, Math.random()*3, z+3.5, false, true));
+    mapOfBuilding.set(3, building(x+3.5, Math.random()*3, z-0.5, true));
+    mapOfBuilding.set(4, building(x+3.5, Math.random()*3, z-0.5, true));  
+
+    let values = mapOfBuilding.values();
+    for(let building of values) {
+        scene.add(building);
+    }
+}
 
 //We can also do const cube = firstTreeCube()
 

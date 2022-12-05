@@ -1,5 +1,7 @@
 
 function building(x, height, z, skyscraper, futuristic) {
+
+  var mapOfBuilding = new Map();
   
     const buildingShape = new THREE.BoxGeometry(2, 6, 2);
     const roofGeo = new THREE.OctahedronGeometry(1.45, 0);
@@ -27,6 +29,11 @@ function building(x, height, z, skyscraper, futuristic) {
     cone.position.y = 3;
     cone.rotation.y = Math.PI / 4;
     return house;
+
+    function Buildings() {
+      mapOfBuilding.set(1, building());
+  }
+  
 
     
     function getRandomColor() {

@@ -1,24 +1,16 @@
 
 
-function Neighborhood(x, height, z, skyscraper, futuristic, listOfBuildings) {
+function Neighborhood(x, height, z) {
     
     const neighborhood = new THREE.Object3D();
 
     neighborhood.add(HouseField(x, z));
 
+    neighborhood.add(building(x-0.5, Math.random()*3, z-0.5, true));
+    neighborhood.add(building(x-0.5, Math.random()*3, z+3.5, false, true));
+    neighborhood.add(building(x+3.5, Math.random()*3, z-0.5, true)); 
+    neighborhood.add(building(x+3.5, Math.random()*3, z+3.5));
     
-    
-    
-
-    if(!futuristic) {
-    neighborhood.add(building(x-0.5, Math.random()*3, z-0.5, skyscraper, true));
-    neighborhood.add(building(x-0.5, Math.random()*3, z+3.5, skyscraper));
-    neighborhood.add(building(x+3.5, Math.random()*3, z-0.5, true));
-    neighborhood.add(building(x+3.5, Math.random()*3, z+3.5, skyscraper));
-    }
-    else {
-       
-    }
     return neighborhood;
 
     function HouseField(x, z) {
