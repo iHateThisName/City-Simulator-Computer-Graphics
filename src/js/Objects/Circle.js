@@ -1,7 +1,7 @@
 function Circle(xPos, yPos, zPos) {
     const geometry = new THREE.CircleGeometry( 1.5, 50 );
 
-    const material = new THREE.MeshBasicMaterial( { color: 0x1b6fde } );
+    const material = new THREE.MeshLambertMaterial( { color: 0x1b6fde } );
 
     const circle = new THREE.Mesh( geometry, material );
 
@@ -12,6 +12,9 @@ function Circle(xPos, yPos, zPos) {
     circle.position.y = yPos;
     circle.position.x = xPos;
     circle.position.z = zPos;
+
+    circle.receiveShadow = true;
+
 
     return circle;
 }

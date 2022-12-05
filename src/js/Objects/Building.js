@@ -5,8 +5,8 @@ function building(x, height, z, skyscraper, futuristic) {
     const roofGeo = new THREE.OctahedronGeometry(1.45, 0);
     const futuristicHouse = new THREE.CylinderGeometry(1,1,6,20);
 
-    const buildingMaterial = new THREE.MeshBasicMaterial({color: getRandomColor()});
-    const roofMaterial = new THREE.MeshBasicMaterial( {color: 0x1C1C1C} );
+    const buildingMaterial = new THREE.MeshLambertMaterial({color: getRandomColor()});
+    const roofMaterial = new THREE.MeshLambertMaterial( {color: 0x1C1C1C} );
 
     
     let building = new THREE.Mesh(buildingShape, buildingMaterial);
@@ -22,6 +22,12 @@ function building(x, height, z, skyscraper, futuristic) {
         house.add(cone);
     }
     }
+
+    building.castShadow = true;
+    cone.castShadow = true;
+    futuristicBuilding.castShadow = true;
+    house.receiveShadow = true;
+
 
     house.position.set(x, height, z);
     cone.position.y = 3;
