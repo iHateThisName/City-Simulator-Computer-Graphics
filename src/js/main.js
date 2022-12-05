@@ -1,5 +1,6 @@
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 import {Road} from "./Objects/Road.js";
+
 // Init scene
 const scene = new THREE.Scene();
 
@@ -13,52 +14,126 @@ const camera = new THREE.PerspectiveCamera
 );
 
 // Init renderer
-const renderer = new THREE.WebGLRenderer({antialias: true});
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.outputEncoding = THREE.sRGBEncoding;
 
-renderer.shadowMap.enabled = true
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-renderer.setPixelRatio(window.devicePixelRatio);
+// from sky example
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.5;
+document.body.appendChild(renderer.domElement);
+
+// sky
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.5;
+document.body.appendChild(renderer.domElement);
 
 // Set size (whole window)
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Render to canvas element
-document.body.appendChild(renderer.domElement);
-
 
 // Init skybox background
 
+// var skybox = new THREE.CubeTextureLoader().load([
+//     "static/skybox/right.bmp",
+//     "static/skybox/left.bmp",
+//     "static/skybox/up.bmp",
+//     "static/skybox/down.bmp",
+//     "static/skybox/front.bmp",
+//     "static/skybox/back.bmp"
+//
+// ]);
 
-var skybox = new THREE.CubeTextureLoader().load([
-    "static/skybox/right.bmp",
-    "static/skybox/left.bmp",
-    "static/skybox/up.bmp",
-    "static/skybox/down.bmp",
-    "static/skybox/front.bmp",
-    "static/skybox/back.bmp"
-
-]);
-
-scene.background = skybox;
+//scene.background = skybox;
 
 // Lights
 let ambient = new THREE.AmbientLight(0xffffff, 0.5);
 ambient.position.set( 0, 0, 0);
-// ambient.castShadow = true;
+// // ambient.castShadow = true;
 scene.add(ambient);
+
+/// Sun
+let elevation = 0.3;
+let azimuth = 0.25;
+let sky, sunSphere;
+
+function initSky() {
+    // Add Sky
+    sky = new THREE.Sky();
+    sky.scale.setScalar( 450000 );
+    scene.add(sky);
+
+    // Add Sun Helper
+    sunSphere = new THREE.Mesh(
+        new THREE.SphereBufferGeometry( 20000, 16, 8 ),
+        new THREE.MeshBasicMaterial( { color: 0xffffff } )
+    );
+    sunSphere.position.y = - 700000;
+    sunSphere.visible = true;
+    scene.add(sunSphere);
+
+    /// GUI
+    let effectController = {
+        turbidity: 10,
+        rayleigh: 2,
+        mieCoefficient: 0.005,
+        mieDirectionalG: 0.8,
+        luminance: 1,
+        inclination: elevation, //1.085, //ele, // 0.8985033172272991, // elevation / inclination
+        azimuth: azimuth, //0.97, //azi, // 0.740544002807376, // Facing front,
+        sun: false
+    };
+
+    let distance = 400000;
+
+    function guiChanged() {
+
+        let uniforms = sky.material.uniforms;
+        uniforms["turbidity"].value = effectController.turbidity;
+        uniforms["rayleigh"].value = effectController.rayleigh;
+        uniforms["mieCoefficient"].value = effectController.mieCoefficient;
+        uniforms["mieDirectionalG"].value = effectController.mieDirectionalG;
+
+        //    var theta = Math.PI * ( effectController.inclination - 0.5 );
+        //    var phi = 2 * Math.PI * ( effectController.azimuth - 0.5 );
+
+        let theta = Math.PI * (effectController.inclination);
+        let phi = 2 * Math.PI * (effectController.azimuth);
+
+        // var theta = Math.PI * ( ele3js - 0.5 );
+        //    var phi = 2 * Math.PI * ( azi3js - 0.5 );
+
+        sunSphere.position.x = distance * Math.cos(phi);
+        sunSphere.position.y = distance * Math.sin(phi) * Math.sin(theta);
+        sunSphere.position.z = distance * Math.sin(phi) * Math.cos(theta);
+
+        sunSphere.visible = effectController.sun;
+
+        uniforms["sunPosition"].value.copy(sunSphere.position);
+
+        renderer.render( scene, camera );
+
+    }
+
+    let gui = new dat.GUI();
+    gui.add(effectController, "inclination", 0, 1, 0.0001 ).onChange(guiChanged);
+    gui.add(effectController, "azimuth", 0, 1, 0.0001 ).onChange(guiChanged);
+    guiChanged();
+}
 
 // Add to scene
 const road = new Road(9,18);
-let sun = new Sun(0, 25, 12.5, 0.5)
-let sunHelper = new THREE.DirectionalLightHelper(sun);
-let shadowHelper = new THREE.CameraHelper(sun.shadow.camera);
+// let sun = new Sun(0, 25, 12.5, 0.8)
+// let sunHelper = new THREE.DirectionalLightHelper(sun);
+// let shadowHelper = new THREE.CameraHelper(sun.shadow.camera);
 
 let park = new Park(0,0,0);
-sun.target = park;
+//sun.target = park;
 
-scene.add(sun)
+//scene.add(sun)
+
 scene.add(park);
-scene.add(shadowHelper);
+//scene.add(shadowHelper);
 //Left side of the park
 scene.add(road.renderRoadAroundPark());
 scene.add(Neighborhood(8.5, 2, -16.5));
@@ -76,7 +151,7 @@ scene.add(Neighborhood(-1.5, 2, 13.5));
 scene.add(Neighborhood(-1.5, 2, -16.5));
 scene.add(firstTreeCube());
 scene.add(ground());
-scene.add(sunHelper);
+//scene.add(sunHelper);
 
 
 // Sets the x, y, and z axes with each having a length of 4
@@ -95,8 +170,9 @@ const controls = new OrbitControls(
     camera, renderer.domElement);
 
 // scene.add(sun);
-// scene.add(ambient);
+scene.add(ambient);
 //scene.add(groundMesh);
+
 
 
 // Draw the scene every time the screen is refreshed
@@ -120,6 +196,10 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+
 window.addEventListener('resize', onWindowResize, false);
 
 animate();
+initSky();
+
+

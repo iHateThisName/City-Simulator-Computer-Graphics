@@ -1,4 +1,8 @@
 function Sun(xPos, yPos, zPos, intensity) {
+
+    //
+
+
     // Lighting
     let sun = new THREE.DirectionalLight(0xffffff, intensity);
     sun.position.set( xPos, yPos, zPos);

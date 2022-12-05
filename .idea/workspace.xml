@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c4a8fa4-c60b-4560-9af4-1acb1e6c0240" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/js/Objects/Sky.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/js/libs/dat.gui.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/Objects/Sun.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Objects/Sun.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
     </list>
@@ -32,9 +35,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/vegar/Downloads/SaveWeb2zip-grama-co"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,6 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669978482069</updated>
       <workItem from="1669978485539" duration="11819000" />
+      <workItem from="1670266464738" duration="8539000" />
     </task>
     <servers />
   </component>
