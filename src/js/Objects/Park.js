@@ -19,7 +19,6 @@ function Park(xPos, yPos, zPos) {
     park.add(Circle(xPos ,0.01,0.90))
     park.add(Circle(xPos ,0.01,0.105))
     park.add(Circle(xPos ,0.01,0.120))
-    park.add(Circle(xPos ,0.01,0.45))
 
     // The trees
 
@@ -35,6 +34,7 @@ function Park(xPos, yPos, zPos) {
     park.add(Tree(xPos - 2, yPos + 1,zPos))
     park.add(Tree(xPos - 1, yPos + 1,zPos - 6))
     park.add(Tree(xPos - 2, yPos + 1,zPos + 7))
+
 
     return park;
 }

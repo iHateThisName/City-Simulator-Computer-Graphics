@@ -7,12 +7,72 @@
         body {
             margin: 0;
         }
-        canvas {
-            width: 100%; height: 100%
+
+        .overlay {
+            position: absolute;
+            width: 100%;
         }
+
+        h1 {
+
+            text-align: center;
+        }
+
+        .optionContainer {
+            align-items: center;
+            display: flex;
+            flex-flow: column;
+            background-color: aliceblue;
+            position: fixed;
+            width: 200px;
+            top: 80px;
+            padding-bottom: 10px;
+        }
+
+        button {
+            width: 80%;
+        }
+
+        .tittle {
+            background-color: #9ab0c9;
+            /*height: 20px;*/
+            position: absolute;
+            width: 100%;
+            /*padding-bottom: 20px;*/
+        }
+
     </style>
 </head>
 <body>
+
+<div class="overlay">
+
+    <div class="tittle">
+        <h1>City Simulator</h1>
+    </div>
+
+    <div class="optionContainer">
+        <h2>Edit City</h2>
+        <label>Neighborhood</label>
+        <input type="number" id="neighborhoodID" min="1" max="10">
+        <button id="addButton">Add Buildings</button>
+        <button id="deleteButton">Delete Buildings</button>
+
+        <h3>Building location</h3>
+        <label>Pos X</label>
+        <input type="number" min="-10", max="10" >
+        <label>Pos Z</label>
+        <input type="number" min="-10", max="10">
+
+    </div>
+
+</div>
+
+
+
+
+
+
 <!--Loading in the tree.js library-->
 <script src="js/three.js"></script>
 <script src="js/Objects/Cube.js"></script>
@@ -22,8 +82,11 @@
 <script src="js/Objects/Building.js"></script>
 <script src="js/Objects/Ground.js"></script>
 <script src="js/Objects/Circle.js"></script>
+<script src="js/Objects/Sun.js"></script>
 <script src="js/Objects/Park.js"></script>
 <script src="js/Objects/Building.js"></script>
 <script src="js/Objects/Neighborhood.js"></script>
+<script src="js/Objects/Sky.js"></script>
+<script src="js/libs/dat.gui.min.js"></script>
 </body>
 </html>

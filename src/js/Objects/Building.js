@@ -1,25 +1,45 @@
 
-function building(x, y, z, skyscraper) {// Init BoxGeometry object (rectangular cuboid)
-    const buildingShape = new THREE.BoxGeometry(2, 3, 2);
+function building(x, height, z, skyscraper, futuristic) {
+
+  var mapOfBuilding = new Map();
+  
+    const buildingShape = new THREE.BoxGeometry(2, 6, 2);
     const roofGeo = new THREE.OctahedronGeometry(1.45, 0);
+    const futuristicHouse = new THREE.CylinderGeometry(1,1,6,20);
 
-    const buildingMaterial = new THREE.MeshBasicMaterial({color: getRandomColor()});
-    const roofMaterial = new THREE.MeshBasicMaterial( {color: 0x1C1C1C} );
+    const buildingMaterial = new THREE.MeshLambertMaterial({color: getRandomColor()});
+    const roofMaterial = new THREE.MeshLambertMaterial( {color: 0x1C1C1C} );
 
-
+    
     let building = new THREE.Mesh(buildingShape, buildingMaterial);
     let cone = new THREE.Mesh( roofGeo, roofMaterial );
+    let futuristicBuilding = new THREE.Mesh(futuristicHouse, buildingMaterial)
     
     const house = new THREE.Group();
-    house.add(building);
-    if(!skyscraper) {
+    if (futuristic) {
+      house.add(futuristicBuilding);
+    } else {
+      house.add(building);
+      if(!skyscraper) {
         house.add(cone);
     }
+    }
 
-    house.position.set(x, y, z);
-    cone.position.y = 1.5;
+    building.castShadow = true;
+    cone.castShadow = true;
+    futuristicBuilding.castShadow = true;
+    house.receiveShadow = true;
+
+
+    house.position.set(x, height, z);
+    cone.position.y = 3;
     cone.rotation.y = Math.PI / 4;
     return house;
+
+    function Buildings() {
+      mapOfBuilding.set(1, building());
+  }
+  
 
     
     function getRandomColor() {
