@@ -2,9 +2,9 @@ function Tree(xPos, yPos, zPos) {
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
-    const leafDarkMaterial = new THREE.MeshBasicMaterial({color: 0x91E56E});
-    const leafLightMaterial = new THREE.MeshBasicMaterial({color: 0xA2FF7A});
-    const stemMaterial = new THREE.MeshBasicMaterial({color: 0x7D5A4F});
+    const leafDarkMaterial = new THREE.MeshLambertMaterial({color: 0x91E56E});
+    const leafLightMaterial = new THREE.MeshLambertMaterial({color: 0xA2FF7A});
+    const stemMaterial = new THREE.MeshLambertMaterial({color: 0x7D5A4F});
 
     let stem = new THREE.Mesh(geometry, stemMaterial);
     stem.position.set( 0, 0, 0 );
@@ -30,6 +30,14 @@ function Tree(xPos, yPos, zPos) {
     leafLight.position.set( 0, 1.2, 0.1 );
     leafLight.scale.set( 1.3, 0.5, 1.1 );
 
+    stem.castShadow = true
+    leafLight.castShadow = true;
+    leafDark.castShadow = true;
+    firstLeaf.castShadow = true;
+    secondLeaf.castShadow = true;
+    thirdLeaf.castShadow = true;
+
+
 
     const tree = new THREE.Object3D();
     tree.add(leafDark);
@@ -39,12 +47,16 @@ function Tree(xPos, yPos, zPos) {
     tree.add(thirdLeaf);
     tree.add(stem);
 
+
     tree.rotation.y = 0;
     tree.rotation.x = 0;
 
     tree.position.x = xPos;
     tree.position.y = yPos;
     tree.position.z = zPos;
+
+    tree.receiveShadow.enabled = true;
+    tree.castShadow = true;
 
 
     return tree;
