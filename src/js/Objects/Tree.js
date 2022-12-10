@@ -2,9 +2,13 @@ function Tree(xPos, yPos, zPos) {
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
-    const leafDarkMaterial = new THREE.MeshLambertMaterial({color: 0x91E56E});
-    const leafLightMaterial = new THREE.MeshLambertMaterial({color: 0xA2FF7A});
-    const stemMaterial = new THREE.MeshLambertMaterial({color: 0x7D5A4F});
+    /// TEXTURES
+    const texture = new THREE.TextureLoader().load( "http://i748.photobucket.com/albums/xx127/GPL_Texture_Repository/Grass/TundraGrass3.png" );
+    const stemTexture = new THREE.TextureLoader().load( "static/textures/treestem.png" );
+
+    const leafDarkMaterial = new THREE.MeshLambertMaterial({color: 0x91E56E, map: texture});
+    const leafLightMaterial = new THREE.MeshLambertMaterial({color: 0xA2FF7A, map: texture});
+    const stemMaterial = new THREE.MeshLambertMaterial({color: 0x7D5A4F, map: stemTexture});
 
     let stem = new THREE.Mesh(geometry, stemMaterial);
     stem.position.set( 0, 0, 0 );

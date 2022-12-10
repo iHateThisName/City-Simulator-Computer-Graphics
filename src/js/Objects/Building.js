@@ -7,8 +7,12 @@ function building(x, height, z, skyscraper, futuristic) {
     const roofGeo = new THREE.OctahedronGeometry(1.45, 0);
     const futuristicHouse = new THREE.CylinderGeometry(1,1,6,20);
 
-    const buildingMaterial = new THREE.MeshLambertMaterial({color: getRandomColor()});
-    const roofMaterial = new THREE.MeshLambertMaterial( {color: 0x1C1C1C} );
+    const buildingTexture = new THREE.TextureLoader().load( "static/textures/building.jpg" );
+    const roofTexture = new THREE.TextureLoader().load( "static/textures/roof.jpg" );
+
+
+    const buildingMaterial = new THREE.MeshLambertMaterial({color: getRandomColor(), map: buildingTexture});
+    const roofMaterial = new THREE.MeshLambertMaterial( {color: 0x1C1C1C, map: roofTexture} );
 
     
     let building = new THREE.Mesh(buildingShape, buildingMaterial);

@@ -22,11 +22,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.shadowMap.enabled = true;
 
-// // from sky example
-// renderer.toneMapping = THREE.ACESFilmicToneMapping;
-// renderer.toneMappingExposure = 0.5;
-// document.body.appendChild(renderer.domElement);
-
 // sky
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.5;
@@ -35,23 +30,8 @@ document.body.appendChild(renderer.domElement);
 // Set size (whole window)
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-
-// Init skybox background
-
-// var skybox = new THREE.CubeTextureLoader().load([
-//     "static/skybox/right.bmp",
-//     "static/skybox/left.bmp",
-//     "static/skybox/up.bmp",
-//     "static/skybox/down.bmp",
-//     "static/skybox/front.bmp",
-//     "static/skybox/back.bmp"
-//
-// ]);
-
-//scene.background = skybox;
-
 // Lights
-let ambient = new THREE.AmbientLight(0xffffff, 0.5);
+let ambient = new THREE.AmbientLight(0xffffff, 1);
 ambient.position.set( 0, 0, 0);
 // // ambient.castShadow = true;
 scene.add(ambient);
@@ -136,6 +116,7 @@ function initSky() {
     gui.add(effectController, "azimuth", 0, 1, 0.0001 ).onChange(guiChanged);
     guiChanged();
 }
+
 
 // Add to scene
 const road = new Road();
