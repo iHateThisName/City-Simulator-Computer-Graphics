@@ -142,8 +142,6 @@ const road = new Road();
 scene.add(ground());
 scene.add(Park(0, 0, 0));
 scene.add(road.renderRoadAroundSquare(8, 18, 0, 0));
-scene.add(road.renderRoadAroundSquare(8, 8, 10, 5));
-scene.add(road.renderRoadAroundSquare(8, 8, 10, -5));
 
 
 
@@ -176,16 +174,27 @@ function addNeighborhood() {
 
 function Neighborhoods() {
 
-    mapOfNeighborhood.set(1, Neighborhood(8.5, 2, -16.5)); 
+    mapOfNeighborhood.set(1, Neighborhood(8.5, 2, -16.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, -15));
     mapOfNeighborhood.set(2, Neighborhood(8.5, 2, -6.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, -5));
     mapOfNeighborhood.set(3, Neighborhood(8.5, 2, 3.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, 5));
     mapOfNeighborhood.set(4, Neighborhood(8.5, 2, 13.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, 15));
     mapOfNeighborhood.set(5, Neighborhood(-1.5, 2, 13.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 0, 15));
     mapOfNeighborhood.set(6, Neighborhood(-11.5, 2, 13.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, 15));
     mapOfNeighborhood.set(7, Neighborhood(-11.5, 2, 3.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, 5));
     mapOfNeighborhood.set(8, Neighborhood(-11.5, 2, -6.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, -5));
     mapOfNeighborhood.set(9, Neighborhood(-11.5, 2, -16.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, -15));
     mapOfNeighborhood.set(10, Neighborhood(-1.5, 2, -16.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 0, -15));
+
 
     let values = mapOfNeighborhood.values();
     for(let nh of values){
