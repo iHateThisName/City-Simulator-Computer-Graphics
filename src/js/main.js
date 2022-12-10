@@ -20,11 +20,12 @@ const camera = new THREE.PerspectiveCamera
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.shadowMap.enabled = true;
 
-// from sky example
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.5;
-document.body.appendChild(renderer.domElement);
+// // from sky example
+// renderer.toneMapping = THREE.ACESFilmicToneMapping;
+// renderer.toneMappingExposure = 0.5;
+// document.body.appendChild(renderer.domElement);
 
 // sky
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -90,9 +91,12 @@ function initSky() {
 
     // sun
     let sun = new Sun(0,0,0,0.5)
+
+    const helper = new THREE.CameraHelper( sun.shadow.camera );
+    scene.add( helper );
     scene.add(sun);
 
-    let distance = 400000;
+    let distance = 30;
 
     function guiChanged() {
 
