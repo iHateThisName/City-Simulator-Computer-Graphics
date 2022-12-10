@@ -28,7 +28,7 @@ function Sun(xPos, yPos, zPos, intensity) {
     sun.shadow.camera.right = -20;
     sun.shadow.camera.top = 20;
     sun.shadow.camera.bottom = -20;
-    sun.shadowCameraFar = 500;
+    // sun.shadowCameraFar = 500;
     sun.shadowBias = -0.0001;
 
     return sun;

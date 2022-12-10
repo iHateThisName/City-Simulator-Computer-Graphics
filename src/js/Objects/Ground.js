@@ -3,9 +3,21 @@ function ground() {
     // Init PlaneGeometry object
     const geometry = new THREE.PlaneGeometry(80, 80);
 
+    // Texture
+    // Texture
+    const texture = new THREE.TextureLoader().load( "static/textures/ground.jpg" );
+    // assuming you want the texture to repeat in both directions:
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+
+    // how many times to repeat in each direction; the default is (1,1),
+    texture.repeat.set( 8, 8 );
+
+
     // Create material with color
     const material = new THREE.MeshLambertMaterial({
         color: 0x2a2b30,
+        map: texture
     });
 
     // Create mesh with geo and material
