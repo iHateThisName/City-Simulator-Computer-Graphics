@@ -37,7 +37,7 @@ ambient.position.set( 0, 0, 0);
 scene.add(ambient);
 
 /// Sun
-let elevation = 0.3;
+let elevation = 1;
 let azimuth = 0.25;
 let sky, sunSphere;
 
@@ -63,7 +63,7 @@ function initSky() {
         rayleigh: 2,
         mieCoefficient: 0.005,
         mieDirectionalG: 0.8,
-        luminance: 1,
+        luminance: 0.5,
         inclination: elevation, //1.085, //ele, // 0.8985033172272991, // elevation / inclination
         azimuth: azimuth, //0.97, //azi, // 0.740544002807376, // Facing front,
         sun: false
