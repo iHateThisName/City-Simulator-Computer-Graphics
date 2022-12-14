@@ -6,8 +6,11 @@ export class Road {
         this.geometry = new THREE.BoxGeometry(length, 0.1, 1);
 
 
+        // Texture
+        const texture = new THREE.TextureLoader().load( "static/textures/road.jpg" );
+        
         // Create material with color
-        const material = new THREE.MeshLambertMaterial({color: 0x5A717A});
+        const material = new THREE.MeshLambertMaterial({color: 0x212020});
         // Create mesh with geo and material
         const road = new THREE.Mesh(this.geometry, material);
 

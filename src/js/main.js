@@ -20,11 +20,7 @@ const camera = new THREE.PerspectiveCamera
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
-
-// from sky example
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.5;
-document.body.appendChild(renderer.domElement);
+renderer.shadowMap.enabled = true;
 
 // sky
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -34,29 +30,14 @@ document.body.appendChild(renderer.domElement);
 // Set size (whole window)
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-
-// Init skybox background
-
-// var skybox = new THREE.CubeTextureLoader().load([
-//     "static/skybox/right.bmp",
-//     "static/skybox/left.bmp",
-//     "static/skybox/up.bmp",
-//     "static/skybox/down.bmp",
-//     "static/skybox/front.bmp",
-//     "static/skybox/back.bmp"
-//
-// ]);
-
-//scene.background = skybox;
-
 // Lights
-let ambient = new THREE.AmbientLight(0xffffff, 0.5);
+let ambient = new THREE.AmbientLight(0xffffff, 1);
 ambient.position.set( 0, 0, 0);
 // // ambient.castShadow = true;
 scene.add(ambient);
 
 /// Sun
-let elevation = 0.3;
+let elevation = 1;
 let azimuth = 0.25;
 let sky, sunSphere;
 
@@ -82,7 +63,7 @@ function initSky() {
         rayleigh: 2,
         mieCoefficient: 0.005,
         mieDirectionalG: 0.8,
-        luminance: 1,
+        luminance: 0.5,
         inclination: elevation, //1.085, //ele, // 0.8985033172272991, // elevation / inclination
         azimuth: azimuth, //0.97, //azi, // 0.740544002807376, // Facing front,
         sun: false
@@ -90,9 +71,12 @@ function initSky() {
 
     // sun
     let sun = new Sun(0,0,0,0.5)
+
+    const helper = new THREE.CameraHelper( sun.shadow.camera );
+    //scene.add( helper );
     scene.add(sun);
 
-    let distance = 400000;
+    let distance = 30;
 
     function guiChanged() {
 
@@ -133,13 +117,12 @@ function initSky() {
     guiChanged();
 }
 
+
 // Add to scene
 const road = new Road();
 scene.add(ground());
 scene.add(Park(0, 0, 0));
 scene.add(road.renderRoadAroundSquare(8, 18, 0, 0));
-scene.add(road.renderRoadAroundSquare(8, 8, 10, 5));
-scene.add(road.renderRoadAroundSquare(8, 8, 10, -5));
 
 
 
@@ -172,16 +155,27 @@ function addNeighborhood() {
 
 function Neighborhoods() {
 
-    mapOfNeighborhood.set(1, Neighborhood(8.5, 2, -16.5)); 
+    mapOfNeighborhood.set(1, Neighborhood(8.5, 2, -16.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, -15));
     mapOfNeighborhood.set(2, Neighborhood(8.5, 2, -6.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, -5));
     mapOfNeighborhood.set(3, Neighborhood(8.5, 2, 3.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, 5));
     mapOfNeighborhood.set(4, Neighborhood(8.5, 2, 13.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 10, 15));
     mapOfNeighborhood.set(5, Neighborhood(-1.5, 2, 13.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 0, 15));
     mapOfNeighborhood.set(6, Neighborhood(-11.5, 2, 13.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, 15));
     mapOfNeighborhood.set(7, Neighborhood(-11.5, 2, 3.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, 5));
     mapOfNeighborhood.set(8, Neighborhood(-11.5, 2, -6.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, -5));
     mapOfNeighborhood.set(9, Neighborhood(-11.5, 2, -16.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, -10, -15));
     mapOfNeighborhood.set(10, Neighborhood(-1.5, 2, -16.5));
+    scene.add(road.renderRoadAroundSquare(8, 8, 0, -15));
+
 
     let values = mapOfNeighborhood.values();
     for(let nh of values){
