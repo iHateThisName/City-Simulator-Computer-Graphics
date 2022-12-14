@@ -73,7 +73,7 @@ function initSky() {
     let sun = new Sun(0,0,0,0.5)
 
     const helper = new THREE.CameraHelper( sun.shadow.camera );
-    scene.add( helper );
+    //scene.add( helper );
     scene.add(sun);
 
     let distance = 30;
